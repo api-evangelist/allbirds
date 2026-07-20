@@ -1,0 +1,30 @@
+generated: '2026-07-17'
+method: searched
+source: https://www.allbirds.com/.well-known/openid-configuration
+docs: https://shopify.dev/docs/api/customer
+notes: >-
+  No first-party OpenAPI is published, so this profile is read from Allbirds's
+  live OIDC / OAuth 2.0 authorization-server discovery documents. Authentication
+  is Shopify Customer Accounts: OpenID Connect + OAuth 2.0 Authorization Code
+  with PKCE. The storefront/UCP MCP read tools need no auth; transacting requires
+  buyer-approved authorization.
+summary:
+  types: [oauth2, openIdConnect]
+  oauth2_flows: [authorizationCode, refreshToken, jwt-bearer]
+  pkce: S256
+  token_endpoint_auth: [client_secret_basic]
+schemes:
+  - name: ShopifyCustomerAccountOIDC
+    type: openIdConnect
+    issuer: https://shopify.com/authentication/11044168
+    openIdConnectUrl: https://www.allbirds.com/.well-known/openid-configuration
+    authorizationUrl: https://accounts.allbirds.com/authentication/oauth/authorize
+    tokenUrl: https://accounts.allbirds.com/authentication/oauth/token
+    endSessionUrl: https://accounts.allbirds.com/authentication/logout
+    jwksUri: https://accounts.allbirds.com/authentication/.well-known/jwks.json
+    grant_types:
+      - authorization_code
+      - refresh_token
+      - 'urn:ietf:params:oauth:grant-type:jwt-bearer'
+    code_challenge_methods: [S256]
+    sources: [well-known/allbirds-openid-configuration.json]
