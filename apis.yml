@@ -1,7 +1,15 @@
 aid: allbirds
 name: Allbirds
-description: 'Allbirds is a company surfaced as a portfolio company of addition and added to the API Evangelist
-  network as a stub for enrichment. Sector: consumer. This profile is a lead awaiting the enrichment pipeline.'
+description: >-
+  Allbirds is a sustainability-focused footwear and apparel brand known for its
+  wool and tree-fiber shoes, selling direct-to-consumer through its Shopify-powered
+  online store at allbirds.com. It was surfaced as a portfolio company of Addition
+  and added to the API Evangelist network. While Allbirds publishes no traditional
+  developer program, its storefront exposes a real agent-commerce surface: a live
+  Shopify Universal Commerce Protocol (UCP) MCP server for catalog search, cart,
+  and checkout; OpenID Connect / OAuth 2.0 Customer Accounts authentication; and an
+  /llms.txt agent-instructions document. This profile captures that agent-native
+  commerce and authentication surface.
 url: https://raw.githubusercontent.com/api-evangelist/allbirds/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,13 +17,52 @@ x-backed-by:
 - addition
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
 modified: '2026-07-17'
+image: https://www.allbirds.com/cdn/shop/files/Allbirds_Logo.png
 tags:
 - Company
 - Consumer
-apis: []
+- Retail
+- E-commerce
+- Footwear
+- Apparel
+- Sustainability
+- Direct-to-Consumer
+- Agent Commerce
+- Shopify
+apis:
+- name: Allbirds Storefront Commerce (UCP / MCP)
+  description: >-
+    Allbirds's agent-facing commerce API, implemented via the Shopify Universal
+    Commerce Protocol (UCP) over MCP. Agents can search the catalog, manage a cart,
+    read store policies/FAQs, and drive a buyer-approved checkout. Discoverable via
+    /.well-known/ucp and /llms.txt.
+  humanURL: https://www.allbirds.com/llms.txt
+  baseURL: https://www.allbirds.com/api/mcp
+  tags:
+  - Agent Commerce
+  - MCP
+  - UCP
+  - Shopify
+  properties:
+  - type: MCPServer
+    url: mcp/allbirds-mcp.yml
+  - type: LLMsTxt
+    url: https://www.allbirds.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -24,3 +71,30 @@ maintainers:
 common:
 - type: Website
   url: https://www.allbirds.com
+- type: MCPServer
+  url: mcp/allbirds-mcp.yml
+- type: LLMsTxt
+  url: llms/allbirds-llms.txt
+- type: WellKnown
+  url: well-known/allbirds-well-known.yml
+- type: Authentication
+  url: authentication/allbirds-authentication.yml
+- type: OAuthScopes
+  url: scopes/allbirds-scopes.yml
+- type: Conformance
+  url: conformance/allbirds-conformance.yml
+- type: DomainSecurity
+  url: security/allbirds-domain-security.yml
+- type: PrivacyPolicy
+  url: https://www.allbirds.com/policies/privacy-policy
+- type: TermsOfService
+  url: https://www.allbirds.com/policies/terms-of-service
+- type: Support
+  url: https://www.allbirds.com/pages/help-center
+- type: Blog
+  url: https://www.allbirds.com/blogs/news
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

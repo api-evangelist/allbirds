@@ -1,0 +1,25 @@
+generated: '2026-07-17'
+method: searched
+host: https://www.allbirds.com
+notes: >-
+  Probed the /.well-known/ discovery surface on the primary store host. Allbirds
+  runs on Shopify; the OIDC/OAuth discovery documents describe Shopify Customer
+  Accounts (issuer shopify.com/authentication/11044168, endpoints on
+  accounts.allbirds.com), and the UCP document is the agent-commerce merchant
+  profile. All saved documents were verified as real JSON (not a catch-all).
+documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: allbirds-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: allbirds-oauth-authorization-server.json
+  - path: /.well-known/ucp
+    status: 200
+    file: allbirds-ucp.json
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
