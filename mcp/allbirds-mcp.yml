@@ -2,55 +2,51 @@ generated: '2026-07-17'
 method: searched
 status: published
 source: https://www.allbirds.com/api/mcp
-notes: >-
-  Allbirds runs a live Shopify Storefront / Universal Commerce Protocol (UCP)
-  MCP server. tools/list was fetched live and returned 5 real tools. The store
-  advertises the server in its /llms.txt and /.well-known/ucp merchant profile.
-  Tool schemas are captured verbatim in allbirds-mcp-tools.json.
+notes: Allbirds runs a live Shopify Storefront / Universal Commerce Protocol (UCP) MCP server. tools/list
+  was fetched live and returned 5 real tools. The store advertises the server in its /llms.txt and /.well-known/ucp
+  merchant profile. Tool schemas are captured verbatim in allbirds-mcp-tools.json.
 server:
   name: allbirds
   vendor: Shopify (UCP storefront commerce)
   transport: http
   protocol: mcp
-  # Primary storefront MCP endpoint (JSON-RPC over HTTP POST, Content-Type: application/json)
   url: https://www.allbirds.com/api/mcp
-  # UCP-branded alias of the same shopping service (from /.well-known/ucp)
   ucp_endpoint: https://weareallbirds.myshopify.com/api/ucp/mcp
   discovery: https://www.allbirds.com/.well-known/ucp
   agent_instructions: https://www.allbirds.com/llms.txt
   auth:
-    read_only: none            # search/browse tools need no auth
-    transacting: buyer-approved # checkout/payment requires explicit human approval
+    read_only: none
+    transacting: buyer-approved
   ucp_versions:
-    - '2026-04-08'
-    - '2026-01-23'
+  - '2026-04-08'
+  - '2026-01-23'
 tools:
-  - name: search_catalog
-    description: >-
-      Search for products from the online store using natural language queries,
-      filter criteria, or both. Paginated; conforms to the UCP catalog search
-      capability (dev.ucp.shopping.catalog.search).
-  - name: get_cart
-    description: >-
-      Get the cart including items, shipping options, discount info, and the
-      checkout URL for a given cart.
-  - name: update_cart
-    description: >-
-      Perform updates to a cart, including adding/removing/updating line items
-      and buyer information.
-  - name: search_shop_policies_and_faqs
-    description: >-
-      Get facts about the store's policies, products, or services.
-  - name: get_product_details
-    description: >-
-      Look up a product by ID; pass the 'options' parameter to select a specific
-      variant.
+- name: search_catalog
+  description: Search for products from the online store using natural language queries, filter criteria,
+    or both. Paginated; conforms to the UCP catalog search capability (dev.ucp.shopping.catalog.search).
+- name: get_cart
+  description: Get the cart including items, shipping options, discount info, and the checkout URL for
+    a given cart.
+- name: update_cart
+  description: Perform updates to a cart, including adding/removing/updating line items and buyer information.
+- name: search_shop_policies_and_faqs
+  description: Get facts about the store's policies, products, or services.
+- name: get_product_details
+  description: Look up a product by ID; pass the 'options' parameter to select a specific variant.
 capabilities:
-  - dev.ucp.shopping.checkout
-  - dev.ucp.shopping.fulfillment
-  - dev.ucp.shopping.discount
-  - dev.ucp.shopping.cart
-  - dev.ucp.shopping.order
-  - dev.ucp.shopping.catalog.search
-  - dev.ucp.shopping.catalog.lookup
-  - dev.shopify.catalog
+- dev.ucp.shopping.checkout
+- dev.ucp.shopping.fulfillment
+- dev.ucp.shopping.discount
+- dev.ucp.shopping.cart
+- dev.ucp.shopping.order
+- dev.ucp.shopping.catalog.search
+- dev.ucp.shopping.catalog.lookup
+- dev.shopify.catalog
+deployment:
+  mode: remote
+  endpoint: https://www.allbirds.com/api/mcp
+  verified: probed
+  probe: live
+  tools: 5
+  checked: '2026-08-12'
+  source: catalog MCP census
