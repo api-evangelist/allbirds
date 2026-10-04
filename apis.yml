@@ -55,6 +55,7 @@ tags:
 - Direct to Consumer
 - Agentic Commerce
 - Shopify
+- Fashion
 tags_raw:
 - Company
 - Consumer
@@ -66,6 +67,7 @@ tags_raw:
 - Direct-to-Consumer
 - Agent Commerce
 - Shopify
+- Fashion
 apis:
 - name: Allbirds Storefront Commerce (UCP / MCP)
   description: >-
@@ -90,6 +92,9 @@ apis:
     url: mcp/allbirds-mcp.yml
   - type: LLMsTxt
     url: https://www.allbirds.com/llms.txt
+  x-surface: platform-generated
+  x-platform: shopify
+  x-platform-surface: storefront-mcp
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
